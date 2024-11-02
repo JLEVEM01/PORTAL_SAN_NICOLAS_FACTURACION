@@ -1,0 +1,42 @@
+@keyframes wipe-in-left {
+    from {
+        clip-path: inset(0 0 0 100%);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+[transition-style="in:wipe:left"] {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-left both;
+}
+
+.--in-left {
+    --transition__duration: 0.5s;
+    --transition__easing: ease-in-out;
+    animation-name: wipe-in-left;
+    background-color: #f7f7f7;
+}
+
+
+@keyframes wipe-out-left {
+    from {
+        clip-path: inset(0 0 0 0);
+    }
+
+    to {
+        clip-path: inset(0 100% 0 0);
+    }
+}
+
+[transition-style="out:wipe:left"] {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-out-left both;
+}
+
+.--in-out {
+    --transition__duration: 2s;
+    --transition__easing: ease-in-out;
+    animation-name: wipe-out-left;
+    background-color: #f7f7f7;
+}
