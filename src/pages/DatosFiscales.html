@@ -24,12 +24,19 @@
         href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="../styles/HamburgerButton.css">
+    <link rel="stylesheet" href="../styles/loader.css">
     <link rel="stylesheet" href="../styles/DatosFiscales/sliderConstancia.css">
     <title>Facturacion</title>
 </head>
 
-<body >
+<div id="loader" class="fixed h-screen inset-0 flex items-center justify-center bg-white z-50">
+    <span class="loader"></span>
+</div>
+</div>
+
+
+<body>
 
     <!--Navbar-->
     <nav class="bg-transparent fixed z-40 w-full md:bg-white md:shadow-xl flex  justify-center h-12">
@@ -53,25 +60,35 @@
                 </ul>
             </div>
 
-            <div data-aos="fade-down" data-aos-delay="100"
-                class="bg-blue-800 shadow-lg h-36 md:h-36 md:h-28 w-36 m-auto p-2  content-center rounded-b-2xl">
-                <img data-aos="zoom-in" data-aos-delay="200" src="../../public/img/SAN_NICOLAS_W.png" alt="" width="100"
-                    class="m-auto">
+            <div data-aos="fade-down" data-aos-delay="100">
 
-                <div class="flex justify-center mt-2 ">
-                    <button data-collapse-toggle="navbar-multi-level" type="button"
-                        class="inline-flex items-center mx-auto p-2  h-10 w-10 bg-white rounded-full transition-transform duration-300  justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        aria-controls="navbar-multi-level" aria-expanded="false" id="menu-toggle">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M1 1h15M1 7h15M1 13h15" />
-                        </svg>
-                    </button>
+                <div class="bg-blue-800 shadow-lg h-32 md:h-32 -mt-2 md:h-28 w-32 m-auto p-2  content-center rounded-b-2xl transition delay-150 translate-y-3 scale-110  duration-300 ease-in-out "
+                    id="logoSection">
+                    <div class="pt-1 md:pt-2">
+                        <img data-aos="zoom-in" data-aos-delay="200" src="/public/img/SAN_NICOLAS_W.png" alt=""
+                            class="m-auto w-[80px]">
+                    </div>
+
+
+                    <div class="flex justify-center mt-2 ">
+                        <button data-collapse-toggle="navbar-multi-level" type="button"
+                            class="menu inline-flex items-center mx-auto p-2  h-10 w-10 bg-white rounded-full transition-transform duration-300  justify-center text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 "
+                            aria-controls="navbar-multi-level" aria-expanded="false" id="menu-toggle"
+                            onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))">
+
+                            <svg width="100" height="100" viewBox="0 0 100 100">
+                                <path class="line line1"
+                                    d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                                <path class="line line2" d="M 20,50 H 80" />
+                                <path class="line line3"
+                                    d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                            </svg>
+                        </button>
+                    </div>
+
                 </div>
-
             </div>
+
 
 
             <div class=" hidden md:block  content-center ">
@@ -98,19 +115,16 @@
 
     </nav>
 
-    <!--Menu responsivo-->
-    <div class="w-full h-screen fixed z-30 bg-blue-800/30  backdrop-blur-2xl content-center hidden md:hidden "
-        id="navbar-multi-level">
+    <div class="w-full h-screen fixed z-30 bg-[#151a36]/95 content-center hidden md:hidden " id="navbar-multi-level">
 
         <div class='accordion-group' data-accordion="default-accordion">
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl  ' id='basic-heading-one-default'>
-                <a href="index.html"
-                    class='accordion-toggle group rounded  p-5  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
+                <a href="../../index.html"
+                    class='accordion-toggle group rounded  p-3  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
                     aria-controls='basic-collapse-one-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-home w-5 fa-lg" style="color: #ffffff;"></i>
                             <h5 class="montserrat-semibold text-2xl text-white">Inicio </h5>
                         </div>
 
@@ -124,12 +138,11 @@
             </div>
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-one-default'>
-                <button
-                    class='accordion-toggle group rounded p-5  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
+                <a href="/src/pages/Facturacion.html"
+                    class='accordion-toggle group rounded p-3  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
                     aria-controls='basic-collapse-one-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-file w-5 fa-lg" style="color: #ffffff;"></i>
 
                             <h5 class="montserrat-semibold text-2xl text-white">Facturacion</h5>
                         </div>
@@ -137,7 +150,7 @@
 
                     </div>
 
-                </button>
+                </a>
                 <div id='basic-collapse-one-default' class='accordion-content w-full px-0 overflow-hidden pr-4 '
                     aria-labelledby='basic-heading-one-default'>
 
@@ -145,19 +158,18 @@
             </div>
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-two-default'>
-                <button
-                    class='accordion-toggle group  rounded  p-5 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
+                <a href="/src/pages/ConsultarFactura/Consulta.html"
+                    class='accordion-toggle group  rounded  p-3 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
                     aria-controls='basic-collapse-two-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-search w-5 fa-lg" style="color: #ffffff;"></i>
                             <h5 class="montserrat-semibold text-2xl text-white">Consultar</h5>
 
                         </div>
 
                     </div>
 
-                </button>
+                </a>
                 <div id='basic-collapse-two-default' class='accordion-content  w-full px-0 overflow-hidden  pr-4 '
                     aria-labelledby='basic-heading-two-default'>
 
@@ -166,11 +178,10 @@
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-three-default'>
                 <a href="Contacto.html"
-                    class='accordion-toggle group rounded p-5 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
+                    class='accordion-toggle group rounded p-3 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
                     aria-controls='basic-collapse-three-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-envelope w-5 fa-lg" style="color: #ffffff;"></i>
                             <h5 class="montserrat-semibold text-2xl text-white">Contacto</h5>
                         </div>
 
@@ -186,11 +197,10 @@
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl' id='basic-heading-three-default'>
                 <a href="Ayuda.html"
-                    class='accordion-toggle group rounded p-5 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
+                    class='accordion-toggle group rounded p-3 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
                     aria-controls='basic-collapse-three-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-question-circle fa-lg w-5" style="color: #ffffff;"></i>
                             <h5 class="montserrat-semibold text-2xl text-white">Ayuda </h5>
 
                         </div>
@@ -207,8 +217,8 @@
 
     </div>
 
-    
-    <section class="content-center h-full pt-40 pb-20 z-30">
+
+    <section class="content-center h-full pt-36 pb-20 z-30">
         <div class="max-w-6xl mx-auto px-10">
 
             <div data-aos="zoom-in" data-aos-delay="100" class="flex w-full justify-center intems-center ">
@@ -301,18 +311,70 @@
                         <div class="mb-5">
                             <span class="text-sm montserrat-semibold text-dark">Uso de CFDI:</span>
                             <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0">
-                                <option value="01">01</option>
+                                <option selected disabled value="">Seleccionar</option>
+                                <option value="1">G01 Adquisición de mercancias.</option>
+                                <option value="2">G02 Devoluciones, descuentos o bonificaciones.</option>
+                                <option value="3">G03 Gastos en general.</option>
+                                <option value="4">I01 Construcciones.</option>
+                                <option value="5">I02 Mobiliario y equipo de oficina por inversiones.</option>
+                                <option value="6">I03 Equipo de transporte.</option>
+                                <option value="7">I04 Equipo de cómputo y accesorios.</option>
+                                <option value="8">I05 Dados, troqueles, moldes, matrices y herramental.</option>
+                                <option value="9">I06 Comunicaciones telefónicas.</option>
+                                <option value="10">I07 Comunicaciones satelitales.</option>
+                                <option value="11">I08 Otra maquinaria y equipo.</option>
+                                <option value="12">D01 Honorarios médicos, dentales y gastos hospitalarios.</option>
+                                <option value="13">D02 Gastos médicos por incapacidad o discapacidad.</option>
+                                <option value="14">D03 Gastos funerales.</option>
+                                <option value="15">D04 Donativos.</option>
+                                <option value="16">D05 Intereses reales efectivamente pagados por créditos hipotecarios
+                                    (casa
+                                    habitación).</option>
+                                <option value="17">D06 Aportaciones voluntarias al SAR.</option>
+                                <option value="18">D07 Primas por seguros de gastos médicos.</option>
+                                <option value="19">D08 Gastos de transportación escolar obligatoria.</option>
+                                <option value="20">D09 Depósitos en cuentas para el ahorro, primas que tengan como base
+                                    planes
+                                    de pensiones.</option>
+                                <option value="21">D10 Pagos por servicios educativos (colegiaturas).</option>
+                                <option value="22">CP01 Pagos.</option>
+                                <option value="23">CN01 Nómina.</option>
+                                <option value="24">S01 Sin Efectos Fiscales.</option>
+                                <option value="25">F01 Por Definir.</option>
                             </select>
                         </div>
 
                         <div class="mb-5">
                             <span class="text-sm montserrat-semibold text-dark">Regimen fiscal:</span>
                             <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0">
-                                <option value="01">01</option>
+                                <option value="">Seleccionar</option>
+                                <option value="">601 - General de Ley Personas Morales</option>
+
+                                <option value="">603 - Personas Morales con Fines no Lucrativos</option>
+
+                                <option value="">605 - Sueldos y Salarios e Ingresos Asimilados a Salarios</option>
+
+                                <option value="">606 - Arrendamiento</option>
+                                <option value="">607 - Régimen de Enajenación o Adquisición de Bienes</option>
+                                <option value="">608 - Demás ingresos</option>
+                                <option value="">610 - Residentes en el Extranjero sin Establecimiento Permanente en México</option>
+                                <option value="">611 - Ingresos por Dividendos (socios y accionistas)</option>
+                                <option value="">612 - Personas Físicas con Actividades Empresariales y Profesionales</option>
+                                <option value="">614 - Ingresos por intereses</option>
+                                <option value="">615 - Régimen de los ingresos por obtención de premios</option>
+                                <option value="">616 - Sin obligaciones fiscales</option>
+                                <option value="">620 - Sociedades Cooperativas de Producción que optan por diferir sus ingresos</option>
+                                <option value="">621 - Incorporación Fiscal</option>
+                                <option value="">622 - Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras</option>
+                                <option value="">623 - Opcional para Grupos de Sociedades</option>
+                                <option value="">624 - Coordinados</option>
+                                <option value="">625 - Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas</option>
+
+                                <option value="">626 - Régimen Simplificado de Confianza</option>
                             </select>
                         </div>
 
-                    </div
+                    </div>
                     <a href="DescargarDocumentos.html">
                         <div
                             class="group content-center relative bg-blue-100 h-12 w-48 overflow-hidden rounded  text-lg shadow">
@@ -381,7 +443,7 @@
     <script src="/src/tailwind.config.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <script src="../script/scrollEvent.js"></script>
     <script>
         AOS.init();
     </script>

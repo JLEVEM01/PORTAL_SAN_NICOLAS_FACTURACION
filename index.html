@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <link rel="stylesheet" href="../styles/fonts.css">
+    <link rel="stylesheet" href="/src/styles/fonts.css">
     <link href="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/css/pagedone.css " rel="stylesheet" />
 
     <script src="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/js/pagedone.js"></script>
@@ -19,30 +19,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/Index/Index.css">
-    <link rel="stylesheet" href="https://unpkg.com/transition-style">
-
-    <link rel="stylesheet" href="../styles/transitionPage.css">
-
+    <link rel="stylesheet" href="/src/styles/Index/Index.css">
+    <link rel="stylesheet" href="/src/styles/HamburgerButton.css">
+    <link rel="stylesheet" href="/src/styles/loader.css">
     <title>Inicio</title>
 </head>
 
 
-<div id="loader" class="absolute  fixed inset-0 flex items-center h-screen justify-center bg-white z-50">
-    <div class="animate-spin rounded-full w-14  h-14 border-4 border-t-cyan-500">
-
+<div id="loader" class="fixed h-screen inset-0 flex items-center justify-center bg-white z-50">
+    <span class="loader"></span>
     </div>
-
 </div>
 
-
-<body transition-style class="--in-left bg-white">
-
+<body>
 
 
 
-    <nav
-        class="bg-transparent fixed z-40 w-full bg-transparent md:bg-black/30 md:backdrop-blur-xl  flex  justify-center h-12" id="navBar">
+
+    <nav class="bg-transparent fixed z-40 w-full bg-transparent md:bg-black/30 md:backdrop-blur-xl  flex  justify-center h-12"
+        id="navBar">
 
         <div class="flex  md:space-x-5 justify-beetwwen">
 
@@ -53,7 +48,7 @@
                             class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left montserrat-semibold">Inicio</a>
                     </li>
                     <li class="group relative ">
-                        <a data-aos="fade-left" data-aos-delay="400" href="ConsultarFactura/Consulta.html"
+                        <a data-aos="fade-left" data-aos-delay="400" href="/src/pages/ConsultarFactura/Consulta.html"
                             class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left montserrat-semibold">
                             Consulta
 
@@ -62,38 +57,47 @@
                     </li>
                 </ul>
             </div>
+            <div data-aos="fade-down" data-aos-delay="100">
 
-            <div data-aos="fade-down" data-aos-delay="100"
-                class="bg-blue-800 shadow-lg h-36 md:h-36 md:h-28 w-36 m-auto p-2  content-center rounded-b-2xl">
-                <img data-aos="zoom-in" data-aos-delay="200" src="../../public/img/SAN_NICOLAS_W.png" alt="" width="100"
-                    class="m-auto">
+                <div
+                    class="bg-blue-800 shadow-lg h-32 md:h-32 -mt-2 md:h-28 w-32 m-auto p-2  content-center rounded-b-2xl transition delay-150 translate-y-3 scale-110  duration-300 ease-in-out " id="logoSection">
+                    <div class="pt-4 md:pt-2">
+                        <img data-aos="zoom-in" data-aos-delay="200" src="/public/img/SAN_NICOLAS_W.png" alt=""
+                        class="m-auto w-[80px]">
+                    </div>
 
-                <div class="flex justify-center mt-2 ">
-                    <button data-collapse-toggle="navbar-multi-level" type="button"
-                        class="inline-flex items-center mx-auto p-2  h-10 w-10 bg-white rounded-full transition-transform duration-300  justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                        aria-controls="navbar-multi-level" aria-expanded="false" id="menu-toggle">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 17 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M1 1h15M1 7h15M1 13h15" />
-                        </svg>
-                    </button>
+
+                    <div class="flex justify-center mt-2 ">
+                        <button data-collapse-toggle="navbar-multi-level" type="button"
+                            class="menu inline-flex items-center mx-auto p-2  h-10 w-10 bg-white rounded-full transition-transform duration-300  justify-center text-sm text-gray-500 rounded-lg md:hidden  focus:outline-none focus:ring-2 focus:ring-gray-200 "
+                            aria-controls="navbar-multi-level" aria-expanded="false" id="menu-toggle"
+                            onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))">
+
+                            <svg width="100" height="100" viewBox="0 0 100 100">
+                                <path class="line line1"
+                                    d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                                <path class="line line2" d="M 20,50 H 80" />
+                                <path class="line line3"
+                                    d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                            </svg>
+                        </button>
+                    </div>
+
                 </div>
-
             </div>
+
 
 
             <div class=" hidden md:block  content-center ">
                 <ul id="listNav2" class="flex  text-sm items-center  space-x-5 text-white">
-                    <li><a data-aos="fade-right" data-aos-delay="400" href="Contacto.html"
+                    <li><a data-aos="fade-right" data-aos-delay="400" href="/src/pages/Contacto.html"
                             class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left montserrat-semibold">
                             Contacto
                         </a>
                     </li>
                     <li>
 
-                        <a data-aos="fade-right" data-aos-delay="800" href="Ayuda.html"
+                        <a data-aos="fade-right" data-aos-delay="800" href="/src/pages/Ayuda.html"
                             class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left montserrat-semibold">
                             Ayuda
                         </a>
@@ -110,18 +114,17 @@
 
 
 
-    <div class="w-full h-screen fixed z-30 bg-blue-800/30 inset-0 backdrop-blur-2xl content-center hidden md:hidden"
+    <div class="w-full h-screen fixed z-30 bg-[#151a36]/95 content-center hidden md:hidden"
         id="navbar-multi-level">
 
         <div class='accordion-group' data-accordion="default-accordion">
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl  ' id='basic-heading-one-default'>
                 <a href="index.html"
-                    class='accordion-toggle group rounded  p-5  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
+                    class='accordion-toggle group rounded  p-3  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
                     aria-controls='basic-collapse-one-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-home w-5 fa-lg" style="color: #ffffff;"></i>
                             <h5 class="montserrat-semibold text-2xl text-white">Inicio </h5>
                         </div>
 
@@ -135,12 +138,11 @@
             </div>
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-one-default'>
-                <button
-                    class='accordion-toggle group rounded p-5  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
+                <a href="/src/pages/Facturacion.html"
+                    class='accordion-toggle group rounded p-3  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
                     aria-controls='basic-collapse-one-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-file w-5 fa-lg" style="color: #ffffff;"></i>
 
                             <h5 class="montserrat-semibold text-2xl text-white">Facturacion</h5>
                         </div>
@@ -148,7 +150,7 @@
 
                     </div>
 
-                </button>
+                </a>
                 <div id='basic-collapse-one-default' class='accordion-content w-full px-0 overflow-hidden pr-4 '
                     aria-labelledby='basic-heading-one-default'>
 
@@ -156,19 +158,18 @@
             </div>
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-two-default'>
-                <button
-                    class='accordion-toggle group  rounded  p-5 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
+                <a href="/src/pages/ConsultarFactura/Consulta.html"
+                    class='accordion-toggle group  rounded  p-3 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
                     aria-controls='basic-collapse-two-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-search w-5 fa-lg" style="color: #ffffff;"></i>
                             <h5 class="montserrat-semibold text-2xl text-white">Consultar</h5>
 
                         </div>
 
                     </div>
 
-                </button>
+                </a>
                 <div id='basic-collapse-two-default' class='accordion-content  w-full px-0 overflow-hidden  pr-4 '
                     aria-labelledby='basic-heading-two-default'>
 
@@ -176,12 +177,11 @@
             </div>
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-three-default'>
-                <a href="Contacto.html"
-                    class='accordion-toggle group rounded p-5 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
+                <a href="/src/pages/Contacto.html"
+                    class='accordion-toggle group rounded p-3 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
                     aria-controls='basic-collapse-three-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-envelope w-5 fa-lg" style="color: #ffffff;"></i>
                             <h5 class="montserrat-semibold text-2xl text-white">Contacto</h5>
                         </div>
 
@@ -196,12 +196,11 @@
             </div>
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl' id='basic-heading-three-default'>
-                <a href="Ayuda.html"
-                    class='accordion-toggle group rounded p-5 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
+                <a href="/src/pages/Ayuda.html"
+                    class='accordion-toggle group rounded p-3 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
                     aria-controls='basic-collapse-three-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <i class="fas fa-question-circle fa-lg w-5" style="color: #ffffff;"></i>
                             <h5 class="montserrat-semibold text-2xl text-white">Ayuda </h5>
 
                         </div>
@@ -229,7 +228,8 @@
                             class="w-[100px] md:w-[250px] hidden md:block " alt="" width="">
                     </div> -->
                     <div class="order-1 md:order-2 ">
-                        <img src="../../public/img/SAN_NICOLAS_01.png" class="w-[200px] md:w-[250px] xl:w-[300px] mb-10" alt="">
+                        <img src="../../public/img/SAN_NICOLAS_01.png" class="w-[200px] md:w-[250px] xl:w-[300px] mb-10"
+                            alt="">
                         <h1 data-aos="fade-up" data-aos-delay="100"
                             class="text-4xl md:text-5xl xl:text-7xl text-left md:text-lett text-white montserrat-bold shine-text">
                             BIENVENIDO AL
@@ -244,9 +244,9 @@
                             REALIZA TU FACTURAS DE PAGO PREDIAL CON TUS DATOS FISCALES
                         </p>
 
-                        <div data-aos="fade-up" data-aos-delay="500"
+                        <!-- <div data-aos="fade-up" data-aos-delay="500"
                             class="h-3 w-full bg-gradient-to-r from-blue-300 rounded-full to-blue-700">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -298,7 +298,7 @@
             <div class="grid grid-cols-2 gap-5 ">
 
 
-                <a href="Facturacion.html" class="col-span-2 md:col-span-1">
+                <a href="/src/pages/Facturacion.html" class="col-span-2 md:col-span-1">
                     <div
                         class="group content-center relative bg-blue-50  h-full overflow-hidden rounded-3xl shadow-2xl text-lg shadow">
 
@@ -339,7 +339,7 @@
 
                 </a>
 
-                <a href="ConsultarFactura/Consulta.html" class="col-span-2 md:col-span-1">
+                <a href="/src/pages/ConsultarFactura/Consulta.html" class="col-span-2 md:col-span-1">
 
 
                     <div
@@ -384,9 +384,11 @@
 
             </div>
 
-            <div class="flex flex-row flex-wrap lg:flex-nowrap my-14  space-y-14 lg:space-y-0 space-x-0 md:space-x-10 mx-5">
-                <div class="w-full lg:w-3/5 order-2 lg:order-1">
-                    <div class="flex flex-row flex-wrap md:flex-nowrap  h-full space-y-5 md:space-y-5 space-x-0 md:space-x-5">
+            <div
+                class="flex flex-row flex-wrap lg:flex-nowrap my-14  space-y-14 lg:space-y-0 space-x-0 md:space-x-10 mx-5">
+                <div class="w-full lg:w-3/5 order-2 lg:order-1 mt-10 lg:mt-0">
+                    <div
+                        class="flex flex-row flex-wrap md:flex-nowrap  h-full space-y-5 md:space-y-5 space-x-0 md:space-x-5">
                         <div class="flex flex-col space-y-5 w-full ">
                             <div data-aos="fade-up" data-aos-delay="100"
                                 class="h-full bg-blue-500 hover:bg-blue-900 p-10 rounded-xl  ">
@@ -400,10 +402,11 @@
                                     <path d="M16.5 17.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0" />
                                     <path d="M18.5 19.5l2.5 2.5" />
                                 </svg>
-                                <h1 class="text-3xl montserrat-bold text-white text-left">Comprobante <br> de pago</h1>
+                                <h1 class="text-xl md:text-3xl  montserrat-bold text-white text-left">Comprobante <br> de pago</h1>
 
-                                <p class="montserrat-regular text-[18px] text-white mt-5">Para indenticar tu pago al
-                                    momneto de generar tu factura, se solcitaran datos como la <span class="montserrat-bold">fecha de pago, folio
+                                <p class="montserrat-regular text-[14px] md:text-[18px]  text-white mt-5">Para indenticar tu pago al
+                                    momneto de generar tu factura, se solcitaran datos como la <span
+                                        class="montserrat-bold">fecha de pago, folio
                                         fiscal e importe pagado</span>.</p>
                             </div>
                             <div data-aos="fade-up" data-aos-delay="500"
@@ -416,10 +419,11 @@
                                     <path
                                         d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
                                 </svg>
-                                <h1 class="text-3xl montserrat-bold text-white text-left">Constancia de situacion fiscal
+                                <h1 class="text-xl md:text-3xl  montserrat-bold text-white text-left">Constancia de situacion fiscal
                                 </h1>
-                                <p class="montserrat-regular text-[18px] text-white mt-5">Para generar tu factura con el
-                                    fin de efectos fiscales, tendras que proporcionar tu <span class="montserrat-bold">RFC, Razon social, Regimen
+                                <p class="montserrat-regular text-[14px] md:text-[18px]  text-white mt-5">Para generar tu factura con el
+                                    fin de efectos fiscales, tendras que proporcionar tu <span
+                                        class="montserrat-bold">RFC, Razon social, Regimen
                                         fiscal y Domicilio fiscal</span>.</p>
 
                             </div>
@@ -440,26 +444,37 @@
                                     <path d="M20 12l2 0" />
                                     <path d="M2 12l2 0" />
                                 </svg>
-                                <h1 class="text-3xl montserrat-bold text-white text-left">Pago correspondiente al año en
+                                <h1 class="text-xl md:text-3xl  montserrat-bold text-white text-left">Pago correspondiente al año en
                                     curso</h1>
-                                <p class="montserrat-regular text-[18px] text-white mt-5">Pago al que se requiera
+                                <p class="montserrat-regular text-[14px] md:text-[18px]  text-white mt-5">Pago al que se requiera
                                     generar un factura tendra que corresponder al año en curso.</p>
 
                             </div>
-                            <div data-aos="fade-up" data-aos-delay="700" class="h-full bg-blue-500 hover:bg-blue-900 p-10 rounded-xl ">
-                                <svg  xmlns="http://www.w3.org/2000/svg"  width="80"  height="80"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-copy-check text-white text-left mb-5"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18.333 6a3.667 3.667 0 0 1 3.667 3.667v8.666a3.667 3.667 0 0 1 -3.667 3.667h-8.666a3.667 3.667 0 0 1 -3.667 -3.667v-8.666a3.667 3.667 0 0 1 3.667 -3.667zm-3.333 -4c1.094 0 1.828 .533 2.374 1.514a1 1 0 1 1 -1.748 .972c-.221 -.398 -.342 -.486 -.626 -.486h-10c-.548 0 -1 .452 -1 1v9.998c0 .32 .154 .618 .407 .805l.1 .065a1 1 0 1 1 -.99 1.738a3 3 0 0 1 -1.517 -2.606v-10c0 -1.652 1.348 -3 3 -3zm1.293 9.293l-3.293 3.292l-1.293 -1.292a1 1 0 0 0 -1.414 1.414l2 2a1 1 0 0 0 1.414 0l4 -4a1 1 0 0 0 -1.414 -1.414" /></svg>
-                                <h1 class="text-3xl montserrat-bold text-white text-left">Pago exclusio</h1>
+                            <div data-aos="fade-up" data-aos-delay="700"
+                                class="h-full bg-blue-500 hover:bg-blue-900 p-10 rounded-xl ">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    class="icon icon-tabler icons-tabler-filled icon-tabler-copy-check text-white text-left mb-5">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M18.333 6a3.667 3.667 0 0 1 3.667 3.667v8.666a3.667 3.667 0 0 1 -3.667 3.667h-8.666a3.667 3.667 0 0 1 -3.667 -3.667v-8.666a3.667 3.667 0 0 1 3.667 -3.667zm-3.333 -4c1.094 0 1.828 .533 2.374 1.514a1 1 0 1 1 -1.748 .972c-.221 -.398 -.342 -.486 -.626 -.486h-10c-.548 0 -1 .452 -1 1v9.998c0 .32 .154 .618 .407 .805l.1 .065a1 1 0 1 1 -.99 1.738a3 3 0 0 1 -1.517 -2.606v-10c0 -1.652 1.348 -3 3 -3zm1.293 9.293l-3.293 3.292l-1.293 -1.292a1 1 0 0 0 -1.414 1.414l2 2a1 1 0 0 0 1.414 0l4 -4a1 1 0 0 0 -1.414 -1.414" />
+                                </svg>
+                                <h1 class="text-xl md:text-3xl  montserrat-bold text-white text-left">Pago exclusio</h1>
 
-                                <p class="montserrat-regular text-[18px] text-white mt-5">Para que puedas generar o consultar tu factura, el peago debera ser exclusivamete del muincipio de <span class="montserrat-bold">San Nicolas de los Garza</span>.</p>
+                                <p class="montserrat-regular text-[14px] md:text-[18px]  text-white mt-5">Para que puedas generar o
+                                    consultar tu factura, el peago debera ser exclusivamete del muincipio de <span
+                                        class="montserrat-bold">San Nicolas de los Garza</span>.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="w-full lg:w-2/5 content-center order-1 lg:order-2">
-                    <h1 data-aos="fade-up" data-aos-delay="100" class="text-5xl md:text-6xl text-left montserrat-bold text-sky-900">
+                    <h1 data-aos="fade-up" data-aos-delay="100"
+                        class="text-5xl md:text-6xl text-left montserrat-bold text-sky-900">
                         ¿Que necesito para poder generar mi factura?</h1>
 
-                    <p data-aos="fade-up" data-aos-delay="300" class="text-xl text-blakc montserrat-regular mt-5">Para poder generar tu factura se requerira que
+                    <p data-aos="fade-up" data-aos-delay="300" class="text-xl text-blakc montserrat-regular mt-5">Para
+                        poder generar tu factura se requerira que
                         tengas los siguientes docuemntos a la mano:</p>
 
                     <ul data-aos="fade-up" data-aos-delay="400" class="list-disc text-xl montserrat-regular ml-10 mt-5">
@@ -473,11 +488,12 @@
                             Correo electronico <span class="montserrat-bold">(Opcional)</span>
                         </li>
                     </ul>
-                    
-                    <p data-aos="fade-up" data-aos-delay="500" class="text-sm text-black montserrat-regular mt-5 mb-7">Tambien puedes consular el apartado de preguntas frecuentas para mas dudas o informacion</p>
+
+                    <p data-aos="fade-up" data-aos-delay="500" class="text-sm text-black montserrat-regular mt-5 mb-7">
+                        Tambien puedes consular el apartado de preguntas frecuentas para mas dudas o informacion</p>
 
                     <div class="py-5">
-                        <a href="Ayuda.html">
+                        <a href="/src/pages/Ayuda.html">
                             <div
                                 class="group content-center relative bg-blue-100 h-12 w-80 overflow-hidden rounded  text-lg shadow">
                                 <div
@@ -485,9 +501,9 @@
                                 </div>
                                 <div class="relative flex intems-center justify-center
                                 space-x-1 text-blue-500 group-hover:text-white montserrat-semibold">
-    
+
                                     <span>Ir a preguntas frecuentes</span>
-    
+
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -507,7 +523,7 @@
 
     <script src="/src/tailwind.config.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="../script/Index/index.js"></script>
+    <script src="/src/script/Index/index.js"></script>
     <script>
         AOS.init();
     </script>
