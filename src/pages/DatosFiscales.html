@@ -306,44 +306,44 @@
 
                         <div class="mb-5">
                             <span class="text-sm montserrat-semibold text-dark">Uso de CFDI:</span>
-                            <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0">
+                            <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0" id="selector_usoCFDI"
+                                onchange="">
                                 <option selected disabled value="">Seleccionar</option>
-                                <option value="1">G01 Adquisición de mercancias.</option>
-                                <option value="2">G02 Devoluciones, descuentos o bonificaciones.</option>
-                                <option value="3">G03 Gastos en general.</option>
-                                <option value="4">I01 Construcciones.</option>
-                                <option value="5">I02 Mobiliario y equipo de oficina por inversiones.</option>
-                                <option value="6">I03 Equipo de transporte.</option>
-                                <option value="7">I04 Equipo de cómputo y accesorios.</option>
-                                <option value="8">I05 Dados, troqueles, moldes, matrices y herramental.</option>
-                                <option value="9">I06 Comunicaciones telefónicas.</option>
-                                <option value="10">I07 Comunicaciones satelitales.</option>
-                                <option value="11">I08 Otra maquinaria y equipo.</option>
-                                <option value="12">D01 Honorarios médicos, dentales y gastos hospitalarios.</option>
-                                <option value="13">D02 Gastos médicos por incapacidad o discapacidad.</option>
-                                <option value="14">D03 Gastos funerales.</option>
-                                <option value="15">D04 Donativos.</option>
-                                <option value="16">D05 Intereses reales efectivamente pagados por créditos hipotecarios
+                                <option value="G01">G01 Adquisición de mercancias.</option>
+                                <option value="G02">G02 Devoluciones, descuentos o bonificaciones.</option>
+                                <option value="G03">G03 Gastos en general.</option>
+                                <option value="I01">I01 Construcciones.</option>
+                                <option value="I01">I01 Mobiliario y equipo de oficina por inversiones.</option>
+                                <option value="I03">I03 Equipo de transporte.</option>
+                                <option value="I04">I04 Equipo de cómputo y accesorios.</option>
+                                <option value="I05">I05 Dados, troqueles, moldes, matrices y herramental.</option>
+                                <option value="I06">I06 Comunicaciones telefónicas.</option>
+                                <option value="I07">I07 Comunicaciones satelitales.</option>
+                                <option value="I08">I08 Otra maquinaria y equipo.</option>
+                                <option value="D01">D01 Honorarios médicos, dentales y gastos hospitalarios.</option>
+                                <option value="D02">D02 Gastos médicos por incapacidad o discapacidad.</option>
+                                <option value="D03">D03 Gastos funerales.</option>
+                                <option value="D04">D04 Donativos.</option>
+                                <option value="D04">D04 Intereses reales efectivamente pagados por créditos hipotecarios
                                     (casa
                                     habitación).</option>
-                                <option value="17">D06 Aportaciones voluntarias al SAR.</option>
-                                <option value="18">D07 Primas por seguros de gastos médicos.</option>
-                                <option value="19">D08 Gastos de transportación escolar obligatoria.</option>
-                                <option value="20">D09 Depósitos en cuentas para el ahorro, primas que tengan como base
+                                <option value="D06">D06 Aportaciones voluntarias al SAR.</option>
+                                <option value="D07">D07 Primas por seguros de gastos médicos.</option>
+                                <option value="D08">D08 Gastos de transportación escolar obligatoria.</option>
+                                <option value="D09">D09 Depósitos en cuentas para el ahorro, primas que tengan como base
                                     planes
                                     de pensiones.</option>
-                                <option value="21">D10 Pagos por servicios educativos (colegiaturas).</option>
-                                <option value="22">CP01 Pagos.</option>
-                                <option value="23">CN01 Nómina.</option>
-                                <option value="24">S01 Sin Efectos Fiscales.</option>
-                                <option value="25">F01 Por Definir.</option>
+                                <option value="D10">D10 Pagos por servicios educativos (colegiaturas).</option>
+                                <option value="CP01">CP01 Pagos.</option>
+                                <option value="CN01">CN01 Nómina.</option>
+                                <option value="S01">S01 Sin Efectos Fiscales.</option>
                             </select>
                         </div>
 
                         <div class="mb-5">
                             <span class="text-sm montserrat-semibold text-dark">Regimen fiscal:</span>
-                            <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0">
-                                <option value="">Seleccionar</option>
+                            <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0" id="selector_usoCFDI">
+                                <!-- <option value="">Seleccionar</option>
                                 <option value="">601 - General de Ley Personas Morales</option>
 
                                 <option value="">603 - Personas Morales con Fines no Lucrativos</option>
@@ -366,7 +366,7 @@
                                 <option value="">624 - Coordinados</option>
                                 <option value="">625 - Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas</option>
 
-                                <option value="">626 - Régimen Simplificado de Confianza</option>
+                                <option value="">626 - Régimen Simplificado de Confianza</option> -->
                             </select>
                         </div>
 
@@ -444,6 +444,63 @@
         AOS.init();
     </script>
     <script src="../script/DatosFiscales/sliderConstancia.js"></script>
+
+    <script>
+
+        const actualizarRegimenFiscal = () => {
+
+            const s_usoCFDI = document.getElementById("selector_usoCFDI")
+            const s_regimenFiscal = document.getElementById("selector_regimenFiscal")
+
+            const s_usoCFDI_values = s_usoCFDI.value;
+
+            s_regimenFiscal.innerHTML = ""
+
+
+            let values = []
+
+            if (s_usoCFDI_values === "G01") {
+
+                values = [
+                    { 601: "General de Ley Personas Morales" },
+                    { 603: "Personas Morales con Fines no Lucrativos" },
+                    { 606: "Arrendamiento" },
+                    { 612: "Personas Físicas con Actividades Empresariales y Profesionales" },
+                    { 620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos" },
+                    { 621: "Incorporación Fiscal" },
+                    { 622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras" },
+                    { 623: "Opcional para Grupos de Sociedades" },
+                    { 624: "Coordinados" },
+                    { 625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas" },
+                    { 626: "Régimen Simplificado de Confianza" }
+                ]
+
+            } else if (s_usoCFDI_values = "G02") {
+
+                values = [
+                    { 601: "General de Ley Personas Morales" },
+                    { 603: "Personas Morales con Fines no Lucrativos" },
+                    { 606: "Arrendamiento" },
+                    { 612: "Personas Físicas con Actividades Empresariales y Profesionales" },
+                    { 616: "Sin obligaciones fiscales" },
+                    { 620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos" },
+                    { 621: "Incorporación Fiscal" },
+                    { 622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras" },
+                    { 623: "Opcional para Grupos de Sociedades" },
+                    { 624: "Coordinados" },
+                    { 625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas" },
+                    { 626: "Régimen Simplificado de Confianza" },
+                ]
+            } else if (s_usoCFDI_values = "G03"){
+                values = [
+                    
+                ]
+            }
+                
+
+        }
+
+    </script>
 
 
 </body>
