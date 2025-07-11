@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="../styles/fonts.css">
     <link rel="stylesheet" href="../styles/swiper.css" />
 
+    <link rel="stylesheet" href="../styles/Pagedone.css">
+    <script src="../script/Pagedone.js" ></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -133,9 +135,9 @@
                 </div>
             </div>
 
-            <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-one-default'>
-                <a href="Facturacion.html"
-                    class='accordion-toggle group rounded p-3  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
+           <div class='accordion p-3  bg-dark/20 backdrop-blur-xl rounded-xl ' id='basic-heading-one-default'>
+                <button
+                    class='accordion-toggle group rounded p-5   accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
                     aria-controls='basic-collapse-one-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
@@ -143,13 +145,24 @@
                             <h5 class="montserrat-semibold text-2xl text-white">Facturacion</h5>
                         </div>
 
-
+                        <svg class='text-white transition duration-500 group-hover:text-white accordion-active:text-white accordion-active:rotate-180'
+                            width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                            <path
+                                d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
+                                stroke='currentColor' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'>
+                            </path>
+                        </svg>
                     </div>
 
-                </a>
+                </button>
                 <div id='basic-collapse-one-default' class='accordion-content w-full px-0 overflow-hidden pr-4 '
                     aria-labelledby='basic-heading-one-default'>
+                    <ul class=" text-2xl text-white montserrat-regular pl-9 pt-5 space-y-5"
+                        id="navbar-multi-level-mobile">
+                        <li><a href="./Facturacion.html">Municipio</a></li>
+                        <li><a href="./PagoLinea/EnLinea.html">En linea</a></li>
 
+                    </ul>
                 </div>
             </div>
 
@@ -307,7 +320,7 @@
                         <div class="mb-5">
                             <span class="text-sm montserrat-semibold text-dark">Uso de CFDI:</span>
                             <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0" id="selector_usoCFDI"
-                                onchange="">
+                                onchange="actualizarRegimenFiscal()">
                                 <option selected disabled value="">Seleccionar</option>
                                 <option value="G01">G01 Adquisición de mercancias.</option>
                                 <option value="G02">G02 Devoluciones, descuentos o bonificaciones.</option>
@@ -335,14 +348,13 @@
                                     de pensiones.</option>
                                 <option value="D10">D10 Pagos por servicios educativos (colegiaturas).</option>
                                 <option value="CP01">CP01 Pagos.</option>
-                                <option value="CN01">CN01 Nómina.</option>
                                 <option value="S01">S01 Sin Efectos Fiscales.</option>
                             </select>
                         </div>
 
                         <div class="mb-5">
                             <span class="text-sm montserrat-semibold text-dark">Regimen fiscal:</span>
-                            <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0" id="selector_usoCFDI">
+                            <select class="h-10 p-2 w-full my-2  rounded bg-gray-100 border-0" id="selector_regimenFiscal">
                                 <!-- <option value="">Seleccionar</option>
                                 <option value="">601 - General de Ley Personas Morales</option>
 
@@ -447,58 +459,536 @@
 
     <script>
 
-        const actualizarRegimenFiscal = () => {
 
-            const s_usoCFDI = document.getElementById("selector_usoCFDI")
-            const s_regimenFiscal = document.getElementById("selector_regimenFiscal")
+        const regimenesPorUsoCFDI = {
+            G01: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            G02: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 616: "Sin obligaciones fiscales" },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            G03: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 616: "Sin obligaciones fiscales" },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            I01: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            I02: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            I03: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            I04: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            I05: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            I06: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            I07: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            I08: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 606: "Arrendamiento" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            D01: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D02: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D03: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D04: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D05: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D06: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D07: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D08: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D09: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            D10: [
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+            ],
+            S01: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              {
+                610: "Residentes en el Extranjero sin Establecimiento Permanente en México",
+              },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 616: "Sin obligaciones fiscales" },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+            CP01: [
+              { 601: "General de Ley Personas Morales" },
+              { 603: "Personas Morales con Fines no Lucrativos" },
+              { 605: "Sueldos y Salarios e Ingresos Asimilados a Salarios" },
+              { 606: "Arrendamiento" },
+              { 608: "Demás ingresos" },
+              {
+                610: "Residentes en el Extranjero sin Establecimiento Permanente en México",
+              },
+              { 611: "Ingresos por Dividendos (socios y accionistas)" },
+              {
+                612: "Personas Físicas con Actividades Empresariales y Profesionales",
+              },
+              { 614: "Ingresos por intereses" },
+              { 616: "Sin obligaciones fiscales" },
+              {
+                620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos",
+              },
+              { 621: "Incorporación Fiscal" },
+              {
+                622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras",
+              },
+              { 623: "Opcional para Grupos de Sociedades" },
+              { 624: "Coordinados" },
+              { 607: "Régimen de Enajenación o Adquisición de Bienes" },
+              { 615: "Régimen de los ingresos por obtención de premios" },
+              {
+                625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas",
+              },
+              { 626: "Régimen Simplificado de Confianza" },
+            ],
+          };
 
+          const actualizarRegimenFiscal = () => {
+            const s_usoCFDI = document.getElementById("selector_usoCFDI");
+            const s_regimenFiscal = document.getElementById(
+              "selector_regimenFiscal"
+            );
             const s_usoCFDI_values = s_usoCFDI.value;
 
-            s_regimenFiscal.innerHTML = ""
+            s_regimenFiscal.innerHTML = "";
+
+            const defaultOption = document.createElement("option");
+            defaultOption.value = "";
+            defaultOption.text = "Seleccionar";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            s_regimenFiscal.appendChild(defaultOption);
+
+            // Obtener los valores según el uso de CFDI seleccionado
+            const values = regimenesPorUsoCFDI[s_usoCFDI_values] || [];
+
+            values.forEach((obj) => {
+              const key = Object.keys(obj)[0];
+              const option = document.createElement("option");
+              option.value = key;
+              option.text = `${key} - ${obj[key]}`;
+              s_regimenFiscal.appendChild(option);
+            });
+          };
 
 
-            let values = []
+        // const actualizarRegimenFiscal = () => {
 
-            if (s_usoCFDI_values === "G01") {
+        //     const s_usoCFDI = document.getElementById("selector_usoCFDI")
+        //     const s_regimenFiscal = document.getElementById("selector_regimenFiscal")
 
-                values = [
-                    { 601: "General de Ley Personas Morales" },
-                    { 603: "Personas Morales con Fines no Lucrativos" },
-                    { 606: "Arrendamiento" },
-                    { 612: "Personas Físicas con Actividades Empresariales y Profesionales" },
-                    { 620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos" },
-                    { 621: "Incorporación Fiscal" },
-                    { 622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras" },
-                    { 623: "Opcional para Grupos de Sociedades" },
-                    { 624: "Coordinados" },
-                    { 625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas" },
-                    { 626: "Régimen Simplificado de Confianza" }
-                ]
+        //     const s_usoCFDI_values = s_usoCFDI.value;
 
-            } else if (s_usoCFDI_values = "G02") {
+        //     s_regimenFiscal.innerHTML = ""
 
-                values = [
-                    { 601: "General de Ley Personas Morales" },
-                    { 603: "Personas Morales con Fines no Lucrativos" },
-                    { 606: "Arrendamiento" },
-                    { 612: "Personas Físicas con Actividades Empresariales y Profesionales" },
-                    { 616: "Sin obligaciones fiscales" },
-                    { 620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos" },
-                    { 621: "Incorporación Fiscal" },
-                    { 622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras" },
-                    { 623: "Opcional para Grupos de Sociedades" },
-                    { 624: "Coordinados" },
-                    { 625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas" },
-                    { 626: "Régimen Simplificado de Confianza" },
-                ]
-            } else if (s_usoCFDI_values = "G03"){
-                values = [
+
+        //     let values = []
+
+        //     if (s_usoCFDI_values === "G01") {
+
+        //         values = [
+        //             { 601: "General de Ley Personas Morales" },
+        //             { 603: "Personas Morales con Fines no Lucrativos" },
+        //             { 606: "Arrendamiento" },
+        //             { 612: "Personas Físicas con Actividades Empresariales y Profesionales" },
+        //             { 620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos" },
+        //             { 621: "Incorporación Fiscal" },
+        //             { 622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras" },
+        //             { 623: "Opcional para Grupos de Sociedades" },
+        //             { 624: "Coordinados" },
+        //             { 625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas" },
+        //             { 626: "Régimen Simplificado de Confianza" }
+        //         ]
+
+        //     } else if (s_usoCFDI_values = "G02") {
+
+        //         values = [
+        //             { 601: "General de Ley Personas Morales" },
+        //             { 603: "Personas Morales con Fines no Lucrativos" },
+        //             { 606: "Arrendamiento" },
+        //             { 612: "Personas Físicas con Actividades Empresariales y Profesionales" },
+        //             { 616: "Sin obligaciones fiscales" },
+        //             { 620: "Sociedades Cooperativas de Producción que optan por diferir sus ingresos" },
+        //             { 621: "Incorporación Fiscal" },
+        //             { 622: "Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras" },
+        //             { 623: "Opcional para Grupos de Sociedades" },
+        //             { 624: "Coordinados" },
+        //             { 625: "Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas" },
+        //             { 626: "Régimen Simplificado de Confianza" },
+        //         ]
+        //     } else if (s_usoCFDI_values = "G03"){
+        //         values = [
                     
-                ]
-            }
+        //         ]
+        //     }
                 
 
-        }
+        // }
 
     </script>
 
@@ -510,8 +1000,8 @@
 <footer class="bg-white w-full shadow  ">
     <div class="w-full max-w-6xl px-6 mx-auto p-4 md:py-8">
         <div class="flex w-full flex-wrap md:flex-nowrap justify-center md:justify-between space-y-5 md:space-y-0">
-            <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img src="../assets/img/SAN_NICOLAS.png" class="h-32" alt="Flowbite Logo" />
+            <a href="https://sn.gob.mx/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                <img src="../assets/img/SAN_NICOLAS.png" class="h-32" alt="Gobierno de San Nicolás" />
             </a>
             <ul
                 class="flex w-full md:w-auto justify-center items-center space-x-3 mb-6 text-sm font-medium text-black sm:mb-0">
@@ -564,6 +1054,11 @@
         <span class="block text-sm text-black montserrat-semibold text-center ">© 2024 <a href="https://sn.gob.mx/"
                 class="hover:underline">Municipio de San Nicolás de los Garza Nuevo León</a> - Todos
             los derechos reservados.</span>
+
+        <span class="block text-sm text-black mt-5 montserrat-semibold text-center ">
+            <a class="text-sm montserrat-semibold  mx-auto underline"
+                href="https://sn.gob.mx/avisos-de-privacidad/">Aviso de privacidad</a>
+        </span>
     </div>
 </footer>
 

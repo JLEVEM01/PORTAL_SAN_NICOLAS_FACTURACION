@@ -28,11 +28,11 @@
 
 <div id="loader" class="fixed h-screen inset-0 flex items-center justify-center bg-white z-50">
     <span class="loader"></span>
-    </div>
+</div>
 </div>
 
 
-<body >
+<body>
 
     <nav class="bg-transparent fixed z-40 w-full md:bg-white md:shadow-xl flex  justify-center h-12">
 
@@ -57,11 +57,11 @@
 
             <div data-aos="fade-down" data-aos-delay="100">
 
-                <div
-                    class="bg-blue-800 shadow-lg h-32 md:h-32 -mt-2 w-32 m-auto p-2  content-center rounded-b-2xl transition delay-150 translate-y-3 scale-110  duration-300 ease-in-out " id="logoSection">
+                <div class="bg-blue-800 shadow-lg h-32 md:h-32 -mt-2 w-32 m-auto p-2  content-center rounded-b-2xl transition delay-150 translate-y-3 scale-110  duration-300 ease-in-out "
+                    id="logoSection">
                     <div class="pt-1 md:pt-2">
                         <img data-aos="zoom-in" data-aos-delay="200" src="../assets/img/SAN_NICOLAS_W.png" alt=""
-                        class="m-auto w-[80px]">
+                            class="m-auto w-[80px]">
                     </div>
 
 
@@ -108,8 +108,7 @@
 
     </nav>
 
-    <div class="w-full h-screen fixed z-30 bg-[#151a36]/95 content-center hidden md:hidden "
-        id="navbar-multi-level">
+    <div class="w-full h-screen fixed z-30 bg-[#151a36]/95 content-center hidden md:hidden " id="navbar-multi-level">
 
         <div class='accordion-group' data-accordion="default-accordion">
 
@@ -131,10 +130,9 @@
                 </div>
             </div>
 
-            <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-one-default'>
-                <a
-                href="Facturacion.html"
-                    class='accordion-toggle group rounded p-3  accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
+           <div class='accordion p-3  bg-dark/20 backdrop-blur-xl rounded-xl ' id='basic-heading-one-default'>
+                <button
+                    class='accordion-toggle group rounded p-5   accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
                     aria-controls='basic-collapse-one-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
@@ -142,19 +140,29 @@
                             <h5 class="montserrat-semibold text-2xl text-white">Facturacion</h5>
                         </div>
 
-
+                        <svg class='text-white transition duration-500 group-hover:text-white accordion-active:text-white accordion-active:rotate-180'
+                            width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                            <path
+                                d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
+                                stroke='currentColor' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'>
+                            </path>
+                        </svg>
                     </div>
 
-                </a>
+                </button>
                 <div id='basic-collapse-one-default' class='accordion-content w-full px-0 overflow-hidden pr-4 '
                     aria-labelledby='basic-heading-one-default'>
+                    <ul class=" text-2xl text-white montserrat-regular pl-9 pt-5 space-y-5"
+                        id="navbar-multi-level-mobile">
+                        <li><a href="./Facturacion.html">Municipio</a></li>
+                        <li><a href="./PagoLinea/EnLinea.html">En linea</a></li>
 
+                    </ul>
                 </div>
             </div>
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-two-default'>
-                <a
-                href="ConsultarFactura/Consulta.html"
+                <a href="ConsultarFactura/Consulta.html"
                     class='accordion-toggle group  rounded  p-3 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
                     aria-controls='basic-collapse-two-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
@@ -215,7 +223,8 @@
 
 
     <section class="content-center h-full z-30">
-        <div data-aos="zoom-out" data-aos-delay="50" class="h-[70vh] bg-[url('/assets/img/Backgrounds/bgContacto.jpg')] bg-cover content-center relative">
+        <div data-aos="zoom-out" data-aos-delay="50"
+            class="h-[70vh] bg-[url('/assets/img/Backgrounds/bgContacto.jpg')] bg-cover content-center relative">
             <div class="h-[70vh] bg-gradient-to-r from-blue-800/70 to-blue-700/90 content-center">
                 <div class="flex flex-space-x-5 z-20 justify-center flex-wrap items-center">
                     <div class="max-w-7xl px-6">
@@ -246,11 +255,13 @@
                     </h1>
 
                     <p data-aos="fade-up" data-aos-delay="400" class="text-xl montserrat-regular text-black my-5">
-                        En caso de presentar problemac con la facturacion electronica, envie un correo a la siguiente dirreccion: <span></span>
+                        En caso de presentar problemas con la facturación electronica, envie un correo a la siguiente
+                        dirreccion: <span></span>
                     </p>
 
                     <p data-aos="fade-up" data-aos-delay="600" class="text-sm montserrat-regular text-black my-5">
-                        Favor de mencionar el tipote de problema, y enexando el ticket escaneado y la cedula con los datos fiscales.
+                        Favor de mencionar el tipo de problema, y enexando el ticket escaneado y la cedula con los
+                        datos fiscales.
                     </p>
                 </div>
 
@@ -259,7 +270,13 @@
                         <div class="flex flex-col w-full space-y-2">
                             <div class="w-full flex p-5 space-x-5 shadow-lg rounded-lg">
                                 <div class="h-24 w-24 rounded-full bg-blue-100 content-center">
-                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="50"  height="50"  viewBox="0 0 24 24"  fill="currentColor"  class="icon icon-tabler icons-tabler-filled icon-tabler-phone text-blue-900 mx-auto"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 3a1 1 0 0 1 .877 .519l.051 .11l2 5a1 1 0 0 1 -.313 1.16l-.1 .068l-1.674 1.004l.063 .103a10 10 0 0 0 3.132 3.132l.102 .062l1.005 -1.672a1 1 0 0 1 1.113 -.453l.115 .039l5 2a1 1 0 0 1 .622 .807l.007 .121v4c0 1.657 -1.343 3 -3.06 2.998c-8.579 -.521 -15.418 -7.36 -15.94 -15.998a3 3 0 0 1 2.824 -2.995l.176 -.005h4z" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        class="icon icon-tabler icons-tabler-filled icon-tabler-phone text-blue-900 mx-auto">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M9 3a1 1 0 0 1 .877 .519l.051 .11l2 5a1 1 0 0 1 -.313 1.16l-.1 .068l-1.674 1.004l.063 .103a10 10 0 0 0 3.132 3.132l.102 .062l1.005 -1.672a1 1 0 0 1 1.113 -.453l.115 .039l5 2a1 1 0 0 1 .622 .807l.007 .121v4c0 1.657 -1.343 3 -3.06 2.998c-8.579 -.521 -15.418 -7.36 -15.94 -15.998a3 3 0 0 1 2.824 -2.995l.176 -.005h4z" />
+                                    </svg>
                                 </div>
 
                                 <div class="flex flex-row items-center">
@@ -272,7 +289,15 @@
 
                             <div class="w-full flex p-5 space-x-5 shadow-lg rounded-lg">
                                 <div class="h-24 w-24 rounded-full bg-blue-100 content-center">
-                                    <svg  xmlns="http://www.w3.org/2000/svg"  width="50"  height="50"  viewBox="0 0 24 24"  fill="currentColor"  class="text-blue-900 mx-auto icon icon-tabler icons-tabler-filled icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z" /><path d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        class="text-blue-900 mx-auto icon icon-tabler icons-tabler-filled icon-tabler-mail">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z" />
+                                        <path
+                                            d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z" />
+                                    </svg>
                                 </div>
 
                                 <div class="flex flex-row items-center">
@@ -306,10 +331,11 @@
 <footer class="bg-white w-full shadow  ">
     <div class="w-full max-w-6xl px-6 mx-auto p-4 md:py-8">
         <div class="flex w-full flex-wrap md:flex-nowrap justify-center md:justify-between space-y-5 md:space-y-0">
-            <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
-                <img src="../assets/img/SAN_NICOLAS.png" class="h-32" alt="Flowbite Logo" />
+            <a href="https://sn.gob.mx/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                <img src="../assets/img/SAN_NICOLAS.png" class="h-32" alt="Gobierno de San Nicolas" />
             </a>
-            <ul class="flex w-full md:w-auto justify-center items-center space-x-3 mb-6 text-sm font-medium text-black sm:mb-0">
+            <ul
+                class="flex w-full md:w-auto justify-center items-center space-x-3 mb-6 text-sm font-medium text-black sm:mb-0">
                 <li>
                     <a href="https://www.facebook.com/GobSanNicolas/?locale=es_LA" class="hover:underline me-4 md:me-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -330,7 +356,8 @@
                 </li>
 
                 <li>
-                    <a href="https://x.com/GobSanNicolas?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="hover:underline me-4 md:me-6">
+                    <a href="https://x.com/GobSanNicolas?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                        class="hover:underline me-4 md:me-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-twitter-x" viewBox="0 0 16 16">
                             <path
@@ -340,8 +367,7 @@
                 </li>
 
                 <li>
-                    <a href="https://www.youtube.com/@GobiernoSanNicolas/featured"
-                        class="hover:underline me-4 md:me-6">
+                    <a href="https://www.youtube.com/@GobiernoSanNicolas/featured" class="hover:underline me-4 md:me-6">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-youtube" viewBox="0 0 16 16">
                             <path
@@ -356,9 +382,14 @@
 
             </ul>
         </div>
-        <span class="block text-sm text-black montserrat-semibold text-center ">© 2024 <a
-                href="https://sn.gob.mx/" class="hover:underline">Munipio de San Nicolas de los Garza Nuevo Leon</a> - Todos
+        <span class="block text-sm text-black montserrat-semibold text-center ">© 2024 <a href="https://sn.gob.mx/"
+                class="hover:underline">Municipio de San Nicolás de los Garza Nuevo León</a> - Todos
             los derechos reservados.</span>
+
+        <span class="block text-sm text-black mt-5 montserrat-semibold text-center ">
+            <a class="text-sm montserrat-semibold  mx-auto underline"
+                href="https://sn.gob.mx/avisos-de-privacidad/">Aviso de privacidad</a>
+        </span>
     </div>
 </footer>
 
