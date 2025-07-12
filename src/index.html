@@ -43,13 +43,35 @@
                             class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left montserrat-semibold">Inicio</a>
                     </li>
                     <li class="group relative ">
+                        <a data-aos="fade-left" data-aos-delay="400" href=""
+                            class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left montserrat-semibold">
+                            Consulta
+                            <div
+                                class="hidden  absolute -left-40 group-hover:block  transition-all duration-500 transform  pt-10 ">
+                                <div class="flex flex-row bg-gray-100 text-black w-56 rounded-lg shadow-2xl ">
+                                    <div class="flex flex-col w-full">
+                                        <div class="montserrat-regular text-xl p-4 hover:bg-cyan-100 rounded-t-lg">
+                                            <a href="pages/ConsultarFactura/Consulta.html">Municipio</a>
+                                        </div>
+                                        <div class="montserrat-regular rounded-b-lg text-xl p-4 hover:bg-cyan-100">
+                                            <a href="pages/ConsultarFactura/EnLinea.html">En linea</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </a>
+
+                    </li>
+                    <!-- <li class="group relative ">
                         <a data-aos="fade-left" data-aos-delay="400" href="pages/ConsultarFactura/Consulta.html"
                             class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[2px] after:bg-white after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left montserrat-semibold">
                             Consulta
 
                         </a>
 
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <div data-aos="fade-down" data-aos-delay="100">
@@ -181,24 +203,37 @@
                 </div>
             </div> -->
 
-            <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-two-default'>
-                <a href="pages/ConsultarFactura/Consulta.html"
-                    class='accordion-toggle group  rounded  p-3 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 accordion-active:text-indigo-600'
-                    aria-controls='basic-collapse-two-default'>
+            <div class='accordion p-3  bg-dark/20 backdrop-blur-xl rounded-xl ' id='basic-heading-one-default'>
+                <button
+                    class='accordion-toggle group rounded p-5   accordion-active:text-indigo-600 inline-flex items-center justify-between leading-8 text-gray-600 w-full transition duration-500 hover:text-indigo-600 active:text-indigo-600'
+                    aria-controls='basic-collapse-one-default'>
                     <div class="flex space-x-2 justify-between items-center w-full">
                         <div class="flex space-x-5 items-center">
-                            <h5 class="montserrat-semibold text-2xl text-white">Consultar</h5>
 
+                            <h5 class="montserrat-semibold text-2xl text-white">Consultar</h5>
                         </div>
 
+                        <svg class='text-white transition duration-500 group-hover:text-white accordion-active:text-white accordion-active:rotate-180'
+                            width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                            <path
+                                d='M16.5 8.25L12.4142 12.3358C11.7475 13.0025 11.4142 13.3358 11 13.3358C10.5858 13.3358 10.2525 13.0025 9.58579 12.3358L5.5 8.25'
+                                stroke='currentColor' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'>
+                            </path>
+                        </svg>
                     </div>
 
-                </a>
-                <div id='basic-collapse-two-default' class='accordion-content  w-full px-0 overflow-hidden  pr-4 '
-                    aria-labelledby='basic-heading-two-default'>
+                </button>
+                <div id='basic-collapse-one-default' class='accordion-content w-full px-0 overflow-hidden pr-4 '
+                    aria-labelledby='basic-heading-one-default'>
+                    <ul class=" text-2xl text-white montserrat-regular pl-9 pt-5 space-y-5"
+                        id="navbar-multi-level-mobile">
+                        <li><a href="pages/ConsultarFactura/Consulta.html">Municipio</a></li>
+                        <li><a href="pages/ConsultarFactura/EnLinea.html">En linea</a></li>
 
+                    </ul>
                 </div>
             </div>
+
 
             <div class='accordion p-3 bg-dark/20 backdrop-blur-xl m-2 rounded-xl ' id='basic-heading-three-default'>
                 <a href="pages/Contacto.html"
